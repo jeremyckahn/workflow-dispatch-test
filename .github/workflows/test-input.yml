@@ -1,0 +1,20 @@
+name: Test Workflow Dispatch Input Size
+
+# https://github.blog/changelog/2020-07-06-github-actions-manual-triggers-with-workflow_dispatch/
+on:
+  workflow_dispatch:
+    inputs:
+      releaseType:
+        description: 'File contents'
+        required: true
+
+jobs:
+  create-artifact:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Artifact
+        run: echo "${{ github.event.inputs.releaseType }}" > output.txt
+      - uses: actions/upload-artifact@v3
+        with:
+          name: output
+          path: output.txt
