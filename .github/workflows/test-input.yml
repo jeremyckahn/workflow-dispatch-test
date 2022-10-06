@@ -4,7 +4,7 @@ name: Test Workflow Dispatch Input Size
 on:
   workflow_dispatch:
     inputs:
-      releaseType:
+      artifactContent:
         description: 'File contents'
         required: true
 
